@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Job Listings</h2>
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <h3>{{ job.company_name }}</h3>
+            <p>{{ job.location }}</p>
+            <p>{{ job.role }}</p>
+            <p>{{ job.average_package }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit">Register</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

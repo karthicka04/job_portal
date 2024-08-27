@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Admin Dashboard - Registered Users</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Domain</th>
+            <th>Experience Level</th>
+            <th>Registered Jobs</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.domain }}</td>
+            <td>{{ user.is_experienced|yesno:"Experienced,Fresher" }}</td>
+            <td>
+                <ul>
+                    {% for job in user.job_set.all %}
+                    <li>{{ job.company_name }} - {{ job.role }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</ul>
+</body>
+</html>
